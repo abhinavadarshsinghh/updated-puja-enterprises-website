@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Puja Enterprises</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login to Puja Enterprises</h2>
+    <form onsubmit="return validateLogin()">
+      <label for="username">Username</label>
+      <input type="text" id="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+    <p class="message">Admin: <strong>admin / 1234</strong><br>User: <strong>user1 / userpass</strong></p>
+  </div>
+
+  <script>
+    function validateLogin() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      const users = {
+        "admin": "1234",        
+        "user1": "userpass",    
+        "user2": "pass2"
+      };
+
+      if (users[username] && users[username] === password) {
+        if (username === "admin") {
+          window.location.href = "dashboard.html";  
+        } else {
+          window.location.href = "code.html";  
+        }
+      } else {
+        alert("Invalid username or password");
+      }
+
+      return false; 
+    }
+  </script>
+</body>
+</html>
+
